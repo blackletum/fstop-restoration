@@ -376,6 +376,10 @@ $Project "Server (Portal)"
 				$File	"$SRCDIR\game\server\portal2\npc_hover_turret.cpp"	
 
 				$File	"$SRCDIR\game\server\portal2\trigger_photo_eraser.cpp"
+				$File	"$SRCDIR\game\server\portal2\func_monopole_field.cpp"
+				$File	"$SRCDIR\game\server\portal2\func_placement_clip.cpp"
+
+
 			}
 		}
 	}
