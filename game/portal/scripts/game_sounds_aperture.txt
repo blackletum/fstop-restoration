@@ -4,7 +4,7 @@
 	"volume"		"1.0"
 	"soundlevel"		"SNDLVL_150db"
 	"pitch"			"PITCH_NORM"
-	"wave"			"weapons/camera/capture.wav"
+	"wave"			"camera/snapshot.wav"
 }
 
 "Weapon_Camera.Release"
@@ -13,7 +13,7 @@
 	"volume"		"1.0"
 	"soundlevel"		"SNDLVL_150db"
 	"pitch"			"PITCH_NORM"
-	"wave"			"weapons/camera/release.wav"
+	"wave"			"camera/release.wav"
 }
 
 "PhotoInventory.Erased"
