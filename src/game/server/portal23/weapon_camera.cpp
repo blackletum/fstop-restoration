@@ -835,7 +835,6 @@ void CWeaponCamera::PrimaryAttack( void )
 	CBaseEntity *pBestEntity = FindFirstCapturableObject( vecViewPos, vecViewDir, vecCaptureBoxMins, vecCaptureBoxMaxs );
 	if ( pBestEntity == NULL )
 	{
-		Warning("Didn't feel like capturing that\n");
 		pPlayer->FlashDenyIndicator( 0.75f, FLASH_INDICATOR_INVALID );
 		return;
 	}
