@@ -35,6 +35,7 @@ game_sounds_manifest
 	"precache_file"		"scripts/npc_sounds_combine_ball_episodic.txt"
 
 	"precache_file"		"scripts/game_sounds_props_aperture.txt"
+	"precache_file"		"scripts/game_sounds_aperture.txt"
 
 
 }
