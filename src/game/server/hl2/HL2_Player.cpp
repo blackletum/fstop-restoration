@@ -3574,3 +3574,39 @@ void CHL2_Player::Splash( void )
 		DispatchEffect( "watersplash", data );
 	}
 }
+
+//------------------------------------------------------------------------------
+// Purpose: 
+//------------------------------------------------------------------------------
+void CC_MWheel_Up(void)
+{
+	CBasePlayer* pPlayer = UTIL_GetLocalPlayer();
+	if (pPlayer == NULL)
+		return;
+
+	CBaseCombatWeapon* pWeapon = pPlayer->GetActiveWeapon();
+	if (pWeapon == NULL)
+		return;
+
+	pWeapon->OnMouseWheel(MWHEEL_UP);
+}
+
+static ConCommand mwheel_up("mwheel_up", CC_MWheel_Up, "Sends a mousewheel message to the currently held weapon", 0);
+
+//------------------------------------------------------------------------------
+// Purpose: 
+//------------------------------------------------------------------------------
+void CC_MWheel_Down(void)
+{
+	CBasePlayer* pPlayer = UTIL_GetLocalPlayer();
+	if (pPlayer == NULL)
+		return;
+
+	CBaseCombatWeapon* pWeapon = pPlayer->GetActiveWeapon();
+	if (pWeapon == NULL)
+		return;
+
+	pWeapon->OnMouseWheel(MWHEEL_DOWN);
+}
+
+static ConCommand mwheel_down("mwheel_down", CC_MWheel_Down, "Sends a mousewheel message to the currently held weapon", 0);
