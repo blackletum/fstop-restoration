@@ -799,6 +799,10 @@ CBaseEntity* UTIL_RestoreCapturedObject(CaptureInfo_t captureInfo, const Vector&
 		Warning("Tried to restore NULL object.  Object was most likely destroyed when in the camera's inventory!\n");
 		return NULL;
 	}
+	else
+	{
+		Warning("Tried to restore entity %s\n", pEnt->GetDebugName());
+	}
 
 	CBaseAnimating* pEntAnimating = (CBaseAnimating*)pEnt;
 	Assert(pEntAnimating);
@@ -822,7 +826,7 @@ CBaseEntity* UTIL_RestoreCapturedObject(CaptureInfo_t captureInfo, const Vector&
 		pHelper->m_ObjectPlacedSize.Set(nScaleLevel, captureInfo.hCapturedEnt, UTIL_GetLocalPlayer());
 	}
 
-	//pEnt->SetStasis(false);
+	pEnt->SetStasis(false);
 	pEnt->Teleport(&vecPlacementOrigin, &vecPlacementAngles, &captureInfo.vecVelocity);
 
 
