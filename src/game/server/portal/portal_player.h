@@ -23,7 +23,7 @@ class CPortal_Player;
 #include "in_buttons.h"
 #include "func_liquidportal.h"
 #include "ai_speech.h"			// For expresser host
-#include "portal23/inv_photos.h"
+#include "portal2/inv_photos.h"
 
 struct PortalPlayerStatistics_t
 {

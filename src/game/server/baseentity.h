@@ -24,7 +24,7 @@
 #include "vscript_server.h"
 #include "branchingsingleton.h"
 #include "bittools.h"
-//#include "portal23/photo.h"
+//#include "portal2/photo.h"
 
 struct CaptureInfo_t;
 

@@ -33,7 +33,7 @@
 #include "soundenvelope.h"
 #include "ai_speech.h"		// For expressors, vcd playing
 #include "sceneentity.h"	// has the VCD precache function
-#include "portal23/weapon_camera.h"
+#include "portal2/weapon_camera.h"
 
 
 // Max mass the player can lift with +use
