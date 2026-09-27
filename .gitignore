@@ -31,6 +31,9 @@ client.lib
 server.dll
 server.pdb
 server.lib
+matchmaking.dll
+matchmaking.pdb
+matchmaking.lib
 missionchooser.dll
 missionchooser.pdb
 missionchooser.lib
@@ -43,3 +46,5 @@ config.cfg
 
 # shader files
 *.tmp
+
+*.vsidx
