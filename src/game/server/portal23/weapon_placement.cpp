@@ -697,6 +697,7 @@ void CWeaponPlacement::OnMouseWheel(int nDirection)
 		if (pCamera)
 		{
 			if (!pCamera->CanScaleCapturedObjects())
+				Warning("Camera doesn't have scale upgrade\n");
 				return;
 		}
 	}
@@ -717,11 +718,13 @@ void CWeaponPlacement::OnMouseWheel(int nDirection)
 	{
 		if (m_nObjectScaleLevel + 1 <= m_CaptureInfo.pPlacementQuery->GetNumScaleUpSteps(&m_CaptureInfo))
 			m_nObjectScaleLevel++;
+		Warning("Scale up!");
 	}
 	else if (nDirection == MWHEEL_DOWN)
 	{
 		if (m_nObjectScaleLevel - 1 >= -(m_CaptureInfo.pPlacementQuery->GetNumScaleDownSteps(&m_CaptureInfo)))
 			m_nObjectScaleLevel--;
+		Warning("Scale down!");
 	}
 
 	// Publish this back to the capture info so that we can cycle through objects and make them retain their sizes
