@@ -1,0 +1,12 @@
+"VertexLitGeneric"
+{
+	"$basetexture"	"models/companionBot/obot_sheet"
+	"$surfaceprop"	"Metal"
+	"$envmaptint" "[1 1 1]"
+	"$model" "1"
+	"$detail" "detail/metal_detail_01"
+	"$detailscale" "5.740"
+	"$detailblendfactor" 1
+	"$detailblendmode" 0
+	
+}

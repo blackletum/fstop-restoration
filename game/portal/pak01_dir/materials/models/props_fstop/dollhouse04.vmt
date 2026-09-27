@@ -1,0 +1,10 @@
+"VertexLitGeneric"
+{
+	"$basetexture"	"models/props_fstop/dollhouse04"
+	"$surfaceprop"	"default"
+	"$detailblendmode" 7 
+	$detailblendfactor .75
+	$detail "models/props_fstop/dollhouse04_detail"
+ 
+
+}

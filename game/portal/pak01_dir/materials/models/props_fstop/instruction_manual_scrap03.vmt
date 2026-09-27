@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+	"$basetexture"	"models/props_fstop/instruction_manual_scrap03"
+	"$surfaceprop"	"default"
+	"$translucent"	1
+}

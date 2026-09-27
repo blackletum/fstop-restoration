@@ -1,0 +1,6 @@
+"UnLitGeneric"
+{
+	"$basetexture"	"models/companionbot/eyeball_invun"
+	"$surfaceprop"	"metal"
+	"$model"		1
+}

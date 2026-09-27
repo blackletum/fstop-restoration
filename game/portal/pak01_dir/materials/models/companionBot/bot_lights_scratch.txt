@@ -1,0 +1,244 @@
+//===========================================================================================================
+//working ver:  continuous color change, blink threshold working.
+//===========================================================================================================
+
+	"$var_blink_period" "1"
+	"$var_blink_factor" "1"
+	"$var_hp_frac" "1"
+	"$var_hp_frac_clamp" "1"
+	"$var_color_r" "1"
+	"$var_color_g" "1"
+	"$var_color_b" "1"
+	"$var_1" "1"
+	"$var_0" "0"
+	"$var_blink_thresh" "0.65"
+
+	"proxies"
+	{
+		//-------------------------------------------
+		// setting the blink period from hp
+		//-------------------------------------------
+		"EntityHealth"
+		{
+			"resultVar" "$var_hp_frac"
+		}
+
+		"Clamp"
+		{
+			"resultVar" "$var_hp_frac"
+			"srcVar1" "$var_hp_frac"
+			"min" ".25"
+			"max" "1"
+		}
+	
+		"Sine"
+		{
+			"resultVar" "$var_blink_period"
+			"sineperiod" "$var_hp_frac"
+			"sinemin" "0"
+			"sinemax" "1"
+		}	
+
+		//-------------------------------------------
+		//set blink factor:
+		//to constant 1 if hp is above our thresh (no blinking),
+		//otherwise use the sine result to blink
+		//-------------------------------------------
+		"LessOrEqual"
+		{
+			"resultVar" "$var_blink_factor"
+			"srcVar1" "$var_hp_frac"
+			"srcVar2" "$var_blink_thresh"
+			"lessEqualVar" "$var_blink_period"
+			"greaterVar" "$var_1"
+		}
+		
+
+
+		//--------------------------------------------
+		//setting components of illumtint to go from green-red 
+		//based on health.  try 3 stages
+		//-------------------------------------------
+		
+		//green is the hp frac
+		"EntityHealth"
+		{
+			"resultVar" "$var_color_g"
+		}
+		
+		//blue component is zero all the time
+		"Equals"
+		{
+			"srcVar1" "$var_0"
+			"resultVar" "$selfillumtint[2]"
+		}
+
+		//red is 1 - hp frac
+		"Subtract"
+		{
+			"srcVar1" "$var_1"
+			"srcVar2" "$var_color_g"
+			"resultVar" "$var_color_r"
+		}
+
+		//-------------------------------------------
+		// multiply each tint component by the blink factor
+		//-------------------------------------------
+		"Multiply"
+		{
+			"srcVar1" "$var_color_r"
+			"srcVar2" "$var_blink_factor"
+			"resultVar" "$selfillumtint[0]"
+		}
+
+		"Multiply"
+		{
+			"srcVar1" "$var_color_g"
+			"srcVar2" "$var_blink_factor"
+			"resultVar" "$selfillumtint[1]"
+		}
+
+
+
+///=---------------------------------------------------------------------------------------
+//working ver with color thresholds.  3 currently
+
+"VertexLitGeneric"
+{
+	"$basetexture"	"models/companionBot/bot_lights"
+	"$surfaceprop"	"glass"
+	"$model" "1"
+	"$selfillum" "1"
+
+	"$var_blink_period" "1"
+	"$var_blink_factor" "1"
+	"$var_hp_frac" "1"
+	"$var_hp_frac_clamp" "1"
+	"$var_color_r" "1"
+	"$var_color_g" "1"
+	"$var_color_b" "1"
+	"$var_1" "1"
+	"$var_0" "0"
+	"$var_half" "0.5"
+	"$var_blink_thresh" "0.75"
+	"$var_green_thresh" "0.75"
+	"$var_yellow_thresh" "0.33"
+	"$var_red_thresh" "0"
+
+	"proxies"
+	{
+		//-------------------------------------------
+		// setting the blink period from hp
+		//-------------------------------------------
+		"EntityHealth"
+		{
+			"resultVar" "$var_hp_frac"
+		}
+
+		"Clamp"
+		{
+			"resultVar" "$var_hp_frac"
+			"srcVar1" "$var_hp_frac"
+			"min" ".25"
+			"max" "1"
+		}
+	
+		"Sine"
+		{
+			"resultVar" "$var_blink_period"
+			"sineperiod" "$var_hp_frac"
+			"sinemin" "0"
+			"sinemax" "1"
+		}	
+
+		//-------------------------------------------
+		//set blink factor:
+		//to constant 1 if hp is above our thresh (no blinking),
+		//otherwise use the sine result to blink
+		//-------------------------------------------
+		"LessOrEqual"
+		{
+			"resultVar" "$var_blink_factor"
+			"srcVar1" "$var_hp_frac"
+			"srcVar2" "$var_blink_thresh"
+			"lessEqualVar" "$var_blink_period"
+			"greaterVar" "$var_1"
+		}
+		
+
+
+		//--------------------------------------------
+		//setting components of illumtint to go from green-red 
+		//based on health.  try 3 discreet stages: green, yellow, red.
+		//-------------------------------------------
+		
+		//green component: check for green or yellow
+		"LessOrEqual"	
+		{
+			"resultVar" "$var_color_g"
+			"srcVar1" "$var_hp_frac"
+			"srcVar2" "$var_green_thresh"
+			"lessEqualVar" "$var_half"
+			"greaterVar" "$var_1"
+
+		}		
+		//green component: check for yellow or red
+		"LessOrEqual"	
+		{
+			"resultVar" "$var_color_g"
+			"srcVar1" "$var_hp_frac"
+			"srcVar2" "$var_yellow_thresh"
+			"lessEqualVar" "$var_0"
+			"greaterVar" "$var_half"
+
+		}
+
+		//red component: check for yellow or red
+		"LessOrEqual"	
+		{
+			"resultVar" "$var_color_r"
+			"srcVar1" "$var_hp_frac"
+			"srcVar2" "$var_yellow_thresh"
+			"lessEqualVar" "$var_1"
+			"greaterVar" "$var_half"
+		}
+
+		//red component: check for green or yellow
+		"LessOrEqual"	
+		{
+			"resultVar" "$var_color_r"
+			"srcVar1" "$var_hp_frac"
+			"srcVar2" "$var_green_thresh"
+			"lessEqualVar" "$var_half"
+			"greaterVar" "$var_0"
+
+		}		
+
+		//blue component is zero all the time
+		"Equals"
+		{
+			"srcVar1" "$var_0"
+			"resultVar" "$selfillumtint[2]"
+		}
+
+
+		//-------------------------------------------
+		// multiply each tint component by the blink factor
+		// (blue is always 0 )
+		//-------------------------------------------
+		"Multiply"
+		{
+			"srcVar1" "$var_color_r"
+			"srcVar2" "$var_blink_factor"
+			"resultVar" "$selfillumtint[0]"
+		}
+
+		"Multiply"
+		{
+			"srcVar1" "$var_color_g"
+			"srcVar2" "$var_blink_factor"
+			"resultVar" "$selfillumtint[1]"
+		}
+	}
+}
+

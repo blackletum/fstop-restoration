@@ -1,0 +1,10 @@
+"VertexLitGeneric"
+{
+	"$basetexture"	"models/companionBot/cbot_sheet"
+	"$surfaceprop"	"Metal_Box"
+	"$detail" "detail/metal_detail_01"
+	"$detailscale" "5.740"
+	"$detailblendfactor" 1
+	"$detailblendmode" 0
+	"$color2" "[1 1 1]"
+}

@@ -1,0 +1,221 @@
+"VertexLitGeneric"
+{
+	"$basetexture"	"models/companionBot/bot_lights"
+	"$surfaceprop"	"glass"
+	"$model" "1"
+	"$selfillum" "1"
+
+	"$var_sine_period" 1
+	"$var_hp_frac" 1
+	"$temp" 0
+	"$scale" 5
+
+	"proxies"
+	{
+		
+		// This sine proxy will put its result in $temp
+		"Sine"
+		{
+			"resultVar"	"$temp"
+			"sineperiod"	1
+			"sinemin"	0
+			"sinemax"	1
+		}
+
+		// Then we multiply the result of the sine by the scale and stick it in the modulation color
+		"Multiply"
+		{
+			"srcVar1"	"$temp"
+			"srcVar2"	"$scale"
+			"resultVar"	"$selfillumtint"
+		}
+
+	}
+}
+
+
+//extra crap
+		"EntityHealth"
+		{
+			"scale" "1"
+			"resultVar" "$selfillumtint"
+			//"resultVar" "$color"
+		{
+
+
+		//change period of sin based on health, clamp to a min rate
+		"EntityHealth"
+		{
+			"resultVar" "$var_hp_frac"
+		}
+
+		"Clamp"
+		{
+			"resultVar" "$var_sine_period"
+			"srcVar1" "$var_hp_frac"
+			"min" "0.2"
+			"max" "1"
+		}
+		"Sine"
+		{
+			"resultVar" "$selfillumtint"
+			"sineperiod" "$var_sine_period"
+			"sinemin" "0"
+			"sinemax" "1"
+			//"resultVar" "$selfillumtint"
+		}
+
+
+//step 2 works
+	"$var_sine_period" "1"
+	"$var_hp_frac" "1"
+	"$bucket1" "2"
+
+	"proxies"
+	{
+		"EntityHealth"
+		{
+			"resultVar" "$var_hp_frac"
+		}
+		"Equals"
+		{
+			"resultVar" "$selfillumtint"
+			"srcVar1" "$var_hp_frac"
+		}
+		
+	}
+
+//works hp and clamp
+	"proxies"
+	{
+		"EntityHealth"
+		{
+			"resultVar" "$var_hp_frac"
+		}
+		"Clamp"
+		{
+			"resultVar" "$selfillumtint"
+			"srcVar1" "$var_hp_frac"
+			"min" ".5"
+			"max" "1"
+		}	
+	}
+
+//works hp and sine period
+	"proxies"
+	{
+		"EntityHealth"
+		{
+			"resultVar" "$var_hp_frac"
+		}
+		"Sine"
+		{
+			"resultVar" "$selfillumtint"
+			"sineperiod" "$var_hp_frac"
+			"sinemin" "0"
+			"sinemax" "1"
+		}	
+	}
+
+//works: hp, clamp, sine period
+	"proxies"
+	{
+		"EntityHealth"
+		{
+			"resultVar" "$var_hp_frac"
+		}
+
+		"Clamp"
+		{
+			"resultVar" "$var_hp_frac"
+			"srcVar1" "$var_hp_frac"
+			"min" ".25"
+			"max" "1"
+		}
+	
+		"Sine"
+		{
+			"resultVar" "$selfillumtint"
+			"sineperiod" "$var_hp_frac"
+			"sinemin" "0"
+			"sinemax" "1"
+		}	
+	}
+
+//BROKE!!! : try to make the clamp be intermediate var
+	"$var_sine_period_all" "1"
+	"$var_hp_frac" "1"
+	"$var_hp_frac_clamp" "1"
+	"$bucket1" "2"
+
+	"proxies"
+	{
+		//-------------------------------------------
+		// setting the blink period from hp
+		//-------------------------------------------
+		"EntityHealth"
+		{
+			"resultVar" "$var_hp_frac"
+		}
+
+		"Clamp"
+		{
+			"resultVar" "$var_hp_frac_clamp"
+			"srcVar1" "$var_hp_frac"
+			"min" ".25"
+			"max" "1"
+		}
+	
+		"Sine"
+		{
+			"resultVar" "$selfillumtint"
+			"sineperiod" "$var_hp_frac_clamp"
+			"sinemin" "0"
+			"sinemax" "1"
+		}	
+		//--------------------------------------------
+
+
+	}
+
+//works:  put "equals" intermediate step.  sin period result goes to var
+	"$var_blink_period" "1"
+	"$var_hp_frac" "1"
+	"$var_hp_frac_clamp" "1"
+	"$bucket1" "2"
+
+	"proxies"
+	{
+		//-------------------------------------------
+		// setting the blink period from hp
+		//-------------------------------------------
+		"EntityHealth"
+		{
+			"resultVar" "$var_hp_frac"
+		}
+
+		"Clamp"
+		{
+			"resultVar" "$var_hp_frac"
+			"srcVar1" "$var_hp_frac"
+			"min" ".25"
+			"max" "1"
+		}
+	
+		"Sine"
+		{
+			"resultVar" "$var_blink_period"
+			"sineperiod" "$var_hp_frac"
+			"sinemin" "0"
+			"sinemax" "1"
+		}	
+		//--------------------------------------------
+
+		"Equals"
+		{
+			"resultVar" "$selfillumtint"
+			"srcVar1" "$var_blink_period"
+		}
+
+
+	}

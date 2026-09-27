@@ -1,0 +1,17 @@
+"VertexLitGeneric"
+{
+	"$basetexture"	"models/companionBot/obot_sheet_variety02"
+	"$surfaceprop"	"Metal"
+	//"$envmap"	"env_cubemap"
+	"$envmaptint" "[1 1 1]"
+	"$detail" "detail/metal_detail_01"
+	"$detailscale" "5.740"
+	"$detailblendfactor" 1
+	"$detailblendmode" 0
+
+	//phong properties
+	//"$phong"	"1"
+	//"$phongboost"	"1"
+	//"$phongexponenttexture"	"models/props_facemovie/ammobox001/ammobox001_exp"
+	//"$phongfresnelranges"	"[2 1 .8]"
+}

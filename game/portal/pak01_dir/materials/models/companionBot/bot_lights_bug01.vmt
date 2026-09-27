@@ -1,0 +1,37 @@
+"VertexLitGeneric"
+{
+	"$basetexture"	"models/companionBot/bot_lights"
+	"$surfaceprop"	"glass"
+	//"$envmap"	"env_cubemap"
+	"$envmaptint" "[1 1 1]"
+	"$model" "1"
+	"$selfillum" "1"
+
+	//phong properties
+	//"$phong"	"1"
+	//"$phongboost"	"1"
+	//"$phongexponenttexture"	"models/props_facemovie/ammobox001/ammobox001_exp"
+	//"$phongfresnelranges"	"[2 1 .8]"
+
+	"$hp_frac" "1"
+
+	"proxies"
+	{
+
+		"EntityHealth"
+		{
+			"scale" "1"
+			"resultVar" "$hp_frac"
+			//"resultVar" "$color"
+		{
+
+		"Sine"
+		{
+			"sineperiod" "1"
+			"sinemin" "0"
+			"sinemax" "1"
+			"resultVar" "$selfillumtint"
+		{
+
+	}
+}

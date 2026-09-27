@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture"	"models/props_fstop/dollhouse03"
+	"$surfaceprop"	"default"
+}
