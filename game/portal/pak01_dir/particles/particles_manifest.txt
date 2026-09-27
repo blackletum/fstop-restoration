@@ -1,25 +1,19 @@
 particles_manifest
 {
-	// Portal 1 particles
-	"file"		"particles/blood_impact.pcf"
-	"file"		"particles/portal_projectile.pcf"
-	"file"		"particles/portalgun.pcf"
-	"file"		"particles/cleansers.pcf"
-	"file"		"particles/fire_01_portal.pcf"
-	"file"		"particles/tubes.pcf"
-	"file"		"particles/environment.pcf"
+	// Portal 1 !particles
+	"file"		"!particles/blood_impact.pcf"
+	"file"		"!particles/portal_projectile.pcf"
+	"file"		"!particles/portalgun.pcf"
+	"file"		"!particles/cleansers.pcf"
+	"file"		"!particles/fire_01_portal.pcf"
+	"file"		"!particles/tubes.pcf"
+	"file"		"!particles/environment.pcf"
 
 
-		"file"		"particles/airvents.pcf"
-		"file"		"particles/chicken.pcf"
-		"file"		"particles/clouds.pcf"
-		"file"		"particles/electriccharge.pcf"
-		"file"		"particles/electriczap.pcf"
-		"file"		"particles/fizzler.pcf"
-		"file"		"particles/geyser.pcf"
-		"file"		"particles/glados.pcf"
-		"file"		"particles/paint_gun_fx.pcf"
-		"file"		"particles/paint_spray_fx.pcf"
-		"file"		"particles/water_leaks.pcf"
-		"file"		"particles/zombie.pcf"
+	"file"		"!particles/airvents.pcf"
+	"file"		"!particles/chicken.pcf"
+	"file"		"!particles/fizzler.pcf"
+	"file"		"!particles/geyser.pcf"
+	"file"		"!particles/glados.pcf"
+	"file"		"!particles/zombie.pcf"
 }	
