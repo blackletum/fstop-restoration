@@ -774,9 +774,7 @@ void UTIL_AlignBBox(Vector& vecMins, Vector& vecMaxs)
 	{
 		if (vecMins[i] > vecMaxs[i])
 		{
-			//swap(vecMins[i], vecMaxs[i]);
-			vecMins[i] = vecMaxs[i];
-			vecMaxs[i] = vecMins[i];
+			V_swap(vecMins[i], vecMaxs[i]);
 		}
 	}
 }
