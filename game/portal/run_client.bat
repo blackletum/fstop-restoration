@@ -1,0 +1,1 @@
+@"E:\SteamLibrary\steamapps\common\Alien Swarm\swarm.exe" -console -windowed -game %cd% -override_vpk -autoexec -developer -dev -w 1920 -h 1080

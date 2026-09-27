@@ -1,0 +1,4 @@
+VertexLitGeneric
+{
+	$BASETEXTURE "models\weapons\v_models\v_hands\v_hands_albedo"
+}
