@@ -1,0 +1,48 @@
+game_sounds_manifest
+{
+	"precache_file"		"scripts/game_sounds.txt"
+	"precache_file"		"scripts/game_sounds_ui.txt"
+	"precache_file"		"scripts/game_sounds_player.txt"
+
+	// HL2 World, Ambient Generic, Items, Physics, Vehicles
+	"precache_file"		"scripts/game_sounds_physics.txt"
+
+	// Game level sounds
+	"precache_file"		"scripts/level_sounds_aperture.txt"
+	"precache_file"		"scripts/game_sounds_portal.txt"
+	"precache_file"		"scripts/game_sounds_player_portal.txt"
+	"precache_file"		"scripts/game_sounds_weapons_portal.txt"
+	"precache_file"		"scripts/npc_sounds_energy_ball.txt"
+	"precache_file"		"scripts/game_sounds_world.txt"
+
+	// Aperture
+	"precache_file"		"scripts/game_sounds_vo.txt"
+	"precache_file"		"scripts/game_sounds_animation.txt"
+	"precache_file"		"scripts/game_sounds_auto_generated.txt"
+	"precache_file"		"scripts/game_sounds_gladosmanual.txt"
+
+	//Portal content Sounds
+	"precache_file"		"scripts/level_sounds_music_portal.txt"
+	"precache_file"		"scripts/level_sounds_escape.txt"
+	"precache_file"		"scripts/npc_sounds_aperture_ai.txt"
+	"precache_file"		"scripts/npc_sounds_energy_ball.txt"
+	"precache_file"		"scripts/npc_sounds_turret_portal.txt"
+	"precache_file"		"scripts/npc_sounds_rocket_turret.txt"
+	"precache_file"		"scripts/npc_sounds_glados_cores.txt"
+
+	// NPC Sounds
+	"precache_file"		"scripts/npc_sounds_combine_ball.txt"
+	"precache_file"		"scripts/npc_sounds_combine_ball_episodic.txt"
+	"precache_file"		"scripts/npc_sounds_hover_turret.txt"	
+	"precache_file"		"scripts/npc_sounds_turret.txt"
+
+	"precache_file"		"scripts/npc_sounds_chicken.txt"
+	"precache_file"		"scripts/npc_sounds_mannequin.txt"
+	"precache_file"		"scripts/npc_sounds_zombie_aperture.txt"
+	"precache_file"		"scripts/npc_sounds_android.txt"
+
+	"precache_file"		"scripts/game_sounds_props_aperture.txt"
+	"precache_file"		"scripts/game_sounds_aperture.txt"
+	"precache_file"		"scripts/game_sounds_spheres_auto_generated.txt"
+
+}

@@ -1,0 +1,28 @@
+"Weapon_Camera.Capture"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"		"1.0"
+	"soundlevel"		"SNDLVL_150db"
+	"pitch"			"PITCH_NORM"
+	"wave"			"camera/snapshot.wav"
+}
+
+"Weapon_Camera.Release"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"		"1.0"
+	"soundlevel"		"SNDLVL_150db"
+	"pitch"			"PITCH_NORM"
+	"wave"			"camera/release.wav"
+}
+
+"PhotoInventory.Erased"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"		"1.0"
+	"soundlevel"		"SNDLVL_150db"
+	"pitch"			"PITCH_NORM"
+	"wave"			"camera/photo_erase1.wav"
+	"wave"			"camera/photo_erase2.wav"
+	"wave"			"camera/photo_erase3.wav"
+}
