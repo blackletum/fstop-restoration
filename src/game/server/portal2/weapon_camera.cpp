@@ -286,7 +286,6 @@ CBaseEntity * CWeaponCamera::FindFirstCapturableObject( const Vector &vecOrigin,
 	}
 	else
 	{
-		Warning("Object isn't capturable\n");
 
 		// Try capturing through portals
 		CProp_Portal* pHitPortal = NULL;
