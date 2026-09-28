@@ -687,55 +687,68 @@ void CWeaponPlacement::OnMouseWheel(int nDirection)
 	if (m_bInPlacementMode == false)
 		return;
 
+	Warning("Mwheel recieved\n");
+
 	CPortal_Player *pPlayer = (CPortal_Player *)ToBasePlayer(GetOwner());
 	Assert(pPlayer);
 	if (pPlayer)
 	{
+		Warning("Portal Player is valid\n");
+
 		CWeaponCamera* pCamera = dynamic_cast<CWeaponCamera*> (pPlayer->Weapon_OwnsThisType("weapon_camera"));
+
+		if (!m_CaptureInfo.hCapturedEnt.Get() || !m_CaptureInfo.pPlacementQuery)
+		{
+			Warning("m_CaptureInfo.hCapturedEnt was INVALID\n");
+			Assert(0);
+			return;
+		}
+		Warning("m_CaptureInfo.hCapturedEnt was valid\n");
+		// See if we need to swap the scaling direction
+		if (camera_reverse_scaling_direction.GetBool())
+		{
+			nDirection *= -1;
+		}
+
+		if (nDirection == MWHEEL_UP)
+		{
+			Warning("Scale up!");
+			if (m_nObjectScaleLevel + 1 <= m_CaptureInfo.pPlacementQuery->GetNumScaleUpSteps(&m_CaptureInfo))
+				m_nObjectScaleLevel++;
+		}
+		else if (nDirection == MWHEEL_DOWN)
+		{
+			Warning("Scale down!");
+			if (m_nObjectScaleLevel - 1 >= -(m_CaptureInfo.pPlacementQuery->GetNumScaleDownSteps(&m_CaptureInfo)))
+				m_nObjectScaleLevel--;
+		}
+
+		// Publish this back to the capture info so that we can cycle through objects and make them retain their sizes
+		m_CaptureInfo.nPreviewScaleLevel = m_nObjectScaleLevel;
+
+		int nIndex = pPlayer->GetSelectedPhoto();
+		Photo_Update(nIndex, m_CaptureInfo);
+
+		if (m_hPhotoPreview)
+		{
+			m_hPhotoPreview->SetObjectScale(GetObjectScale(m_CaptureInfo));
+		}
+
+		Warning("Cam check\n");
 
 		// if they have a weapon camera, it may restrict their ability to scale objects.
 		if (pCamera)
 		{
+			Warning("Cam is valid\n");
 			if (!pCamera->CanScaleCapturedObjects())
 				Warning("Camera doesn't have scale upgrade\n");
 				return;
 		}
-	}
+		else
+		{
+			Warning("Portal Player does not own a camera\n");
+		}
 
-	if (!m_CaptureInfo.hCapturedEnt.Get() || !m_CaptureInfo.pPlacementQuery)
-	{
-		Assert(0);
-		return;
-	}
-
-	// See if we need to swap the scaling direction
-	if (camera_reverse_scaling_direction.GetBool())
-	{
-		nDirection *= -1;
-	}
-
-	if (nDirection == MWHEEL_UP)
-	{
-		if (m_nObjectScaleLevel + 1 <= m_CaptureInfo.pPlacementQuery->GetNumScaleUpSteps(&m_CaptureInfo))
-			m_nObjectScaleLevel++;
-		Warning("Scale up!");
-	}
-	else if (nDirection == MWHEEL_DOWN)
-	{
-		if (m_nObjectScaleLevel - 1 >= -(m_CaptureInfo.pPlacementQuery->GetNumScaleDownSteps(&m_CaptureInfo)))
-			m_nObjectScaleLevel--;
-		Warning("Scale down!");
-	}
-
-	// Publish this back to the capture info so that we can cycle through objects and make them retain their sizes
-	m_CaptureInfo.nPreviewScaleLevel = m_nObjectScaleLevel;
-
-	int nIndex = pPlayer->GetSelectedPhoto();
-	Photo_Update(nIndex, m_CaptureInfo);
-
-	if (m_hPhotoPreview)
-	{
-		m_hPhotoPreview->SetObjectScale(GetObjectScale(m_CaptureInfo));
 	}
 }
 
