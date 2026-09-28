@@ -674,7 +674,7 @@ bool CPhysicsProp::CPhotoPlacementQuery::GetPlacementPosition_NoHelper(CaptureIn
 	Vector& positionOut,
 	QAngle& anglesOut)
 {
-	return false;
+	return true; // a change thingy
 }
 
 
