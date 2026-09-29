@@ -674,6 +674,7 @@ void CWeaponPlacement::ItemPostFrame(void)
 	if (vm != NULL)
 	{
 		vm->SetPoseParameter("photo_scale", flScale);
+		Warning("Photo scale: %f\n", flScale);
 	}
 }
 
@@ -687,23 +688,18 @@ void CWeaponPlacement::OnMouseWheel(int nDirection)
 	if (m_bInPlacementMode == false)
 		return;
 
-	Warning("Mwheel recieved\n");
-
 	CPortal_Player *pPlayer = (CPortal_Player *)ToBasePlayer(GetOwner());
 	Assert(pPlayer);
 	if (pPlayer)
 	{
-		Warning("Portal Player is valid\n");
 
 		CWeaponCamera* pCamera = dynamic_cast<CWeaponCamera*> (pPlayer->Weapon_OwnsThisType("weapon_camera"));
 
 		if (!m_CaptureInfo.hCapturedEnt.Get() || !m_CaptureInfo.pPlacementQuery)
 		{
-			Warning("m_CaptureInfo.hCapturedEnt was INVALID\n");
 			Assert(0);
 			return;
 		}
-		Warning("m_CaptureInfo.hCapturedEnt was valid\n");
 		// See if we need to swap the scaling direction
 		if (camera_reverse_scaling_direction.GetBool())
 		{
@@ -734,21 +730,14 @@ void CWeaponPlacement::OnMouseWheel(int nDirection)
 			m_hPhotoPreview->SetObjectScale(GetObjectScale(m_CaptureInfo));
 		}
 
-		Warning("Cam check\n");
 
 		// if they have a weapon camera, it may restrict their ability to scale objects.
 		if (pCamera)
 		{
-			Warning("Cam is valid\n");
 			if (!pCamera->CanScaleCapturedObjects())
 				Warning("Camera doesn't have scale upgrade\n");
 				return;
 		}
-		else
-		{
-			Warning("Portal Player does not own a camera\n");
-		}
-
 	}
 }
 
