@@ -363,7 +363,7 @@ $Project "Client (Portal)"
 				$File	"$SRCDIR\game\shared\portal\weapon_portalgun_shared.h"
 			}
 
-			$Folder	"F-Stop"
+			$Folder	"F-Stop + Hybrid Era"
 			{
 				$File	"portal2\c_npc_hover_turret.cpp"
 				$File	"portal2\aperture_render_targets.cpp"
