@@ -32,9 +32,9 @@ BEGIN_SEND_TABLE_NOBASE( CHL2PlayerLocalData, DT_HL2Local )
 	SendPropFloat( SENDINFO(m_flFlashBattery) ),
 	SendPropVector( SENDINFO(m_vecLocatorOrigin) ),
 #endif
-	// SendPropArray3( SENDINFO_ARRAY3(m_bHasPhotoInInventory), SendPropBool( SENDINFO_ARRAY(m_bHasPhotoInInventory) ) ),
+	SendPropArray3( SENDINFO_ARRAY3(m_bHasPhotoInInventory), SendPropBool( SENDINFO_ARRAY(m_bHasPhotoInInventory) ) ),
 	SendPropArray3( SENDINFO_ARRAY3(m_nLocatorEntityIndices), SendPropInt( SENDINFO_ARRAY(m_nLocatorEntityIndices) ) ),
-	// SendPropInt( SENDINFO(m_nSelectedPhoto) ),
+	SendPropInt( SENDINFO(m_nSelectedPhoto) ),
 	SendPropBool( SENDINFO(m_bPlacingPhoto) ),
 
 END_SEND_TABLE()
@@ -54,12 +54,10 @@ BEGIN_SIMPLE_DATADESC( CHL2PlayerLocalData )
 	DEFINE_FIELD( m_vecLocatorOrigin, FIELD_POSITION_VECTOR ),
 #endif
 
-#ifdef PORTAL2
-	// DEFINE_ARRAY( m_bHasPhotoInInventory, FIELD_BOOLEAN, 3 ),
+	DEFINE_ARRAY( m_bHasPhotoInInventory, FIELD_BOOLEAN, 3 ),
 	DEFINE_ARRAY( m_nLocatorEntityIndices, FIELD_INTEGER, 16 ),
-	// DEFINE_FIELD( m_nSelectedPhoto, FIELD_INTEGER ),
+	DEFINE_FIELD( m_nSelectedPhoto, FIELD_INTEGER ),
 	DEFINE_FIELD( m_bPlacingPhoto, FIELD_BOOLEAN ),
-#endif // PORTAL2
 
 	// Ladder related stuff
 	DEFINE_FIELD( m_hLadder, FIELD_EHANDLE ),

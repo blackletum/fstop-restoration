@@ -48,6 +48,8 @@ public:
 
 	int		m_nLocatorEntityIndices[16];
 	bool	m_bPlacingPhoto;
+	int		m_nSelectedPhoto;
+	bool	m_bHasPhotoInInventory[3];
 
 	// Ladder related data
 	EHANDLE			m_hLadder;
