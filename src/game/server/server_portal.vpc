@@ -345,7 +345,7 @@ $Project "Server (Portal)"
 				$File	"$SRCDIR\game\shared\portal\weapon_portalgun_shared.h"
 			}
 
-			$Folder	"F-Stop"
+			$Folder	"F-Stop + Hybrid Era"
 			{
 				$File	"$SRCDIR\game\server\portal2\inv_photos.cpp"
 				$File	"$SRCDIR\game\server\portal2\inv_photos.h"
@@ -364,9 +364,13 @@ $Project "Server (Portal)"
 				$File	"$SRCDIR\game\server\portal2\prop_geyser.cpp"
 				$File	"$SRCDIR\game\server\portal2\prop_levitator.cpp"
 				$File	"$SRCDIR\game\server\portal2\prop_mousetrap.cpp"
+				$File	"$SRCDIR\game\server\portal2\prop_monopole.cpp"
 				$File	"$SRCDIR\game\server\portal2\prop_portal_tunnel.cpp"
 				$File	"$SRCDIR\game\server\portal2\prop_reflect.cpp"
 				$File	"$SRCDIR\game\server\portal2\prop_swap.cpp"
+				$File	"$SRCDIR\game\server\portal2\prop_tombstone.cpp"
+
+				$File	"$SRCDIR\game\server\portal2\prop_personality_sphere.cpp"
 
 				$File	"$SRCDIR\game\server\portal2\npc_android.cpp"
 				$File	"$SRCDIR\game\server\portal2\npc_android.h"	

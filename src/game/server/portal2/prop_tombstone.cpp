@@ -18,9 +18,44 @@ public:
 	virtual void Spawn( void );
 	virtual bool CreateVPhysics( void );
 	virtual void Precache( void );
-	virtual ICapturedObjectPlacementQuery *GetPlacementQuery( void );
+	//virtual ICapturedObjectPlacementQuery *GetPlacementQuery( void );
 	virtual void OnReleased( void );
 	virtual void DeathNotice( CBaseEntity *pVictim );
+
+	START_BRANCHING_SINGLETON_DEFINITION(CPhotoPlacementQuery)
+	{
+	public:
+		virtual bool GetPlacementPosition(CaptureInfo_t & captureInfo, CheckPlacementData_t & placementData, Vector & positionOut, QAngle & anglesOut);
+
+		int GetNumScaleUpSteps(const CaptureInfo_t * pCaptureInfo) { return 2; }
+		int GetNumScaleDownSteps(const CaptureInfo_t * pCaptureInfo) { return 2; }
+
+		float GetScaleForStep(int nScaleStep, const CaptureInfo_t* pCaptureInfo)
+		{
+			switch (nScaleStep)
+			{
+			default:
+			case 0:
+				return 1.0f;
+				break;
+			case 1:
+				return 1.5f;
+				break;
+			case 2:
+				return 2.0f;
+				break;
+			case -1:
+				return 0.75f;
+				break;
+			case -2:
+				return 0.5f;
+				break;
+			}
+
+			return 1.0f;
+		}
+	};
+	END_BRANCHING_SINGLETON_DEFINITION(CPhotoPlacementQuery);
 
 private:
 	DECLARE_DATADESC();
@@ -33,7 +68,7 @@ private:
 	bool	m_bOnValidGround;
 };
 
-const char g_szModelName[] = "models/props_fstop/tombstone001.mdl";
+const char g_szModelName[] = "models/props_fstop/tombstone001.mdl"; // gravestone_cross001a.mdl
 
 const float RESPAWN_DELAY = 2.0f;
 
@@ -223,10 +258,31 @@ void CPropTombstone::OnReleased( void )
 	BaseClass::OnReleased();
 }
 
+bool CPropTombstone::CPhotoPlacementQuery::GetPlacementPosition(CaptureInfo_t& captureInfo,
+	CheckPlacementData_t& placementData,
+	Vector& positionOut,
+	QAngle& anglesOut) 
+{
+	/* // wow you can TELL this is old code
+	if (pOriginOut)
+	{
+		*pOriginOut = vecEndPoint;
+	}
+
+	if (pAnglesOut)
+	{
+		*pAnglesOut = QAngle(0, 0, 0);
+	}
+	*/
+
+	return true;
+}
+
 //------------------------------------------------------------------------------
 // Portal tunnel (temp)
 //------------------------------------------------------------------------------
 
+/*
 class CPropTombstone_PlacementQuery : public CBaseCapturedObjectPlacementQuery
 {
 	bool GetPlacementPosition( const Vector &vecEndPoint, const Vector &vecEndNormal, CaptureInfo_t &captureInfo, int nScaleStep, Vector *pOriginOut, QAngle *pAnglesOut )
@@ -275,12 +331,14 @@ class CPropTombstone_PlacementQuery : public CBaseCapturedObjectPlacementQuery
 
 // Query singleton
 CPropTombstone_PlacementQuery g_PropTombstone_PlacementQuery;
+*/
 
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
-
+/*
 ICapturedObjectPlacementQuery *CPropTombstone::GetPlacementQuery( void ) 
 { 
 	return &g_PropTombstone_PlacementQuery; 
 }
+*/
