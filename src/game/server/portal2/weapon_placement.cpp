@@ -428,10 +428,10 @@ void CWeaponPlacement::PlacePhoto(void)
 	CBaseEntity *pNewObject = ReleaseObject(m_CaptureInfo, vecTargetPos, vecTargetAngles, pHelper);
 	if (pNewObject)
 	{
+		ReleaseEffect(pNewObject->WorldSpaceCenter());
+
 		int nIndex = pPlayer->GetSelectedPhoto();
 		Photo_Remove(nIndex);
-
-		ReleaseEffect(pNewObject->WorldSpaceCenter());
 	}
 
 	// Alert our companions that we just replaced an object

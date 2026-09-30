@@ -14,7 +14,7 @@
 #include "photo.h"
 
 
-const int MAX_PHOTOS = 3; // was 1, suck it valve! suck on a popcicle for making this lovely code, thank you valve
+const int MAX_PHOTOS = 1;
 extern int g_CurMaxInvPhotos;
 
 //

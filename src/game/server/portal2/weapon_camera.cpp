@@ -44,8 +44,6 @@ ConVar sv_camera_capture_box_size( "sv_camera_capture_box_size", "15", FCVAR_CHE
 
 bool g_bAllOnCapturedChainedToBase;	// For catching errors in leaf classes
 
-extern ConVar sv_enable_photo_inventory;
-
 
 IMPLEMENT_SERVERCLASS_ST( CWeaponCamera, DT_WeaponCamera )
 END_SEND_TABLE()
@@ -795,16 +793,13 @@ void CWeaponCamera::PrimaryAttack( void )
 	if ( pPlayer == NULL )
 		return;
 
-	if (!sv_enable_photo_inventory.GetBool())
+	// If we've taken a picture, go back to NULL
+	if (Photo_Count() >= 1 )
 	{
-		// If we've taken a picture, go back to NULL
-		if (Photo_Count() >= 1)
-		{
-			// Switch away to the photo placement mode
-			pPlayer->SwitchToNextBestWeapon(this);
-			pPlayer->ControlHelperAnimate(CONTROL_STATE_PICTURE);
-			return;
-		}
+		// Switch away to the photo placement mode
+		pPlayer->SwitchToNextBestWeapon( this );
+		pPlayer->ControlHelperAnimate( CONTROL_STATE_PICTURE );
+		return;
 	}
 
 	if ( m_bInViewfinder == false )
