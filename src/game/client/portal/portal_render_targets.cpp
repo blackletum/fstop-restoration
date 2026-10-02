@@ -241,4 +241,4 @@ void CPortalRenderTargets::ShutdownClientRenderTargets()
 
 static CPortalRenderTargets g_PortalRenderTargets;
 EXPOSE_SINGLE_INTERFACE_GLOBALVAR( CPortalRenderTargets, IClientRenderTargets, CLIENTRENDERTARGETS_INTERFACE_VERSION, g_PortalRenderTargets );
-CPortalRenderTargets* portalrendertargets = &g_PortalRenderTargets;
+//CPortalRenderTargets* portalrendertargets = &g_PortalRenderTargets;
