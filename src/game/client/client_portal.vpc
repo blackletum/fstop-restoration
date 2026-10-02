@@ -372,6 +372,7 @@ $Project "Client (Portal)"
 				$File	"portal2\hud_indicator.cpp"
 				$File	"portal2\hud_viewfinder.cpp"
 				$File	"portal2\hud_photo_inventory.cpp"
+				$File	"portal2\c_item_photo.cpp"
 			}
 		}
 	}
