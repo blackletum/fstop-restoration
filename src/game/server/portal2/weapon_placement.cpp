@@ -671,7 +671,7 @@ void CWeaponPlacement::ItemPostFrame(void)
 	flScale = Bias(flScale, 0.05f);
 
 	CBaseViewModel *vm = ToBasePlayer(GetOwner())->GetViewModel();
-	if (vm != NULL)
+	if (!vm == NULL)
 	{
 		vm->SetPoseParameter("photo_scale", flScale);
 		Warning("Photo scale: %f\n", flScale);
@@ -708,13 +708,11 @@ void CWeaponPlacement::OnMouseWheel(int nDirection)
 
 		if (nDirection == MWHEEL_UP)
 		{
-			Warning("Scale up!");
 			if (m_nObjectScaleLevel + 1 <= m_CaptureInfo.pPlacementQuery->GetNumScaleUpSteps(&m_CaptureInfo))
 				m_nObjectScaleLevel++;
 		}
 		else if (nDirection == MWHEEL_DOWN)
 		{
-			Warning("Scale down!");
 			if (m_nObjectScaleLevel - 1 >= -(m_CaptureInfo.pPlacementQuery->GetNumScaleDownSteps(&m_CaptureInfo)))
 				m_nObjectScaleLevel--;
 		}
