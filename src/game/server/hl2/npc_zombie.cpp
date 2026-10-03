@@ -234,9 +234,15 @@ void CZombie::Precache( void )
 {
 	BaseClass::Precache();
 
+	PrecacheModel( "models/zombie/new_zombie.mdl" );
+	PrecacheModel( "models/zombie/classic_torso.mdl" );
+	PrecacheModel( "models/zombie/classic_legs.mdl" );
+
+	/*
 	PrecacheModel( "models/zombie/classic.mdl" );
 	PrecacheModel( "models/zombie/classic_torso.mdl" );
 	PrecacheModel( "models/zombie/classic_legs.mdl" );
+	*/
 
 	PrecacheScriptSound( "Zombie.FootstepRight" );
 	PrecacheScriptSound( "Zombie.FootstepLeft" );
@@ -487,7 +493,7 @@ void CZombie::SetZombieModel( void )
 	}
 	else
 	{
-		SetModel( "models/zombie/classic.mdl" );
+		SetModel( "models/zombie/new_zombie.mdl" );
 		SetHullType( HULL_HUMAN );
 	}
 
